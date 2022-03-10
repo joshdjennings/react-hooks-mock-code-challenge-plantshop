@@ -15,9 +15,14 @@ function PlantPage() {
 			});
 	}, []);
 
+	function handleAddPlant(newPlant) {
+		const updatedPLantsArray = [...NewPlantForm, newPlant];
+		setPlants(updatedPLantsArray);
+	}
+
 	return (
 		<main>
-			<NewPlantForm />
+			<NewPlantForm onAddPlant={handleAddPlant} />
 			<Search />
 			<PlantList plants={plants} />
 		</main>
