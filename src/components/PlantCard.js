@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function PlantCard({ plant, onDeletePlant }) {
 	const [isInStock, setIsInStock] = useState(true);
-	const { name, image, price } = plant;
+	const { id, name, image, price } = plant;
 
 	function handleToggleStock() {
 		setIsInStock((isInStock) => !isInStock);
@@ -12,6 +12,7 @@ function PlantCard({ plant, onDeletePlant }) {
 		fetch(`http://localhost:6001/plants/${id}`, {
 			method: 'DELETE',
 		});
+		onDeletePlant(id);
 	}
 
 	return (
