@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 
-function PlantCard({ plant }) {
+function PlantCard({ plant, onDeletePlant }) {
 	const [isInStock, setIsInStock] = useState(true);
 	const { name, image, price } = plant;
 
 	function handleToggleStock() {
 		setIsInStock((isInStock) => !isInStock);
+	}
+
+	function handleDeleteClick() {
+		fetch(`http://localhost:6001/plants/${id}`, {
+			method: 'DELETE',
+		});
 	}
 
 	return (
@@ -20,6 +26,7 @@ function PlantCard({ plant }) {
 			) : (
 				<button onClick={handleToggleStock}>Out of Stock</button>
 			)}
+			<button onClick={handleDeleteClick}>Delete</button>
 		</li>
 	);
 }
